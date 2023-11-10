@@ -86,6 +86,22 @@ function App() {
             .then(json => setUsers(json))
     }, []);
 
+    // Lesson 5 HW
+    const [formValuesOutput, setFormValuesOutput] = useState([]);
+    const inputName = useRef();
+    const inputSurname = useRef();
+    const inputEmail = useRef();
+
+    function setValuesFromInputs() {
+        setFormValuesOutput([inputName.current.value, inputSurname.current.value, inputEmail.current.value]);
+    }
+
+    useEffect(() => {
+        console.log({ formValuesOutput });
+    }, [formValuesOutput]);
+
+    let arrForHelper = ["Pear", "Black Tea", "Cheese", "Olives", "Grapes"];
+
     return (
         <div className="App">
             {/* Lesson 4 */}
@@ -130,7 +146,15 @@ function App() {
                 {users.map((e, index) => <li key={e.id}>{e.name}</li>)}
             </ul>
             <hr />
-            <Helper />
+            {/* Lesson 5 HW */}
+            <h3>Homework 5</h3>
+            <ul>{formValuesOutput.map((e, index) => <li key={index}>{e}</li>)}</ul>
+            <input type="text" ref={inputName} placeholder="Name" />
+            <input type="text" ref={inputSurname} placeholder="Surname" />
+            <input type="email" ref={inputEmail} placeholder="Email" />
+            <button onClick={setValuesFromInputs}>Set these values</button>
+            <hr />
+            <Helper arr={arrForHelper} />
         </div>
     );
 }

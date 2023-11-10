@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function Helper() {
+export default function Helper(props) {
 
     const [helperState, setHelperState] = useState("Helper");
 
@@ -13,6 +13,8 @@ export default function Helper() {
             <h3>*** {helperState} component ***</h3>
             <button onClick={changeState}>Change state</button>
             {console.log("Render component Helper")}
+            {/* Homework 5 */ }
+            <ul>{props.arr.map((e, i) => <li key={i}>{e}</li>)}</ul>
         </div>
     );
 }
