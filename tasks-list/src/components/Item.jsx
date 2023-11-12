@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function Item({ id, title, status }) {
+export default function Item({ id, title, status, time }) {
 
     const classes = ["to-do"];
     const [checked, setChecked] = useState(status);
@@ -40,8 +40,8 @@ export default function Item({ id, title, status }) {
                 <li className={classes.join(" ")}>
                     <label>
                         <input type="checkbox" checked={checked} onChange={updateStatus} />
-                        <span>{title}</span>
-                        <i className="material-icons red-text" onClick={removeElement}>X</i>
+                        <span>{title} ({time})</span>
+                        <b className="material-icons red-text" onClick={removeElement}>X</b>
                     </label>
                 </li>
             )}

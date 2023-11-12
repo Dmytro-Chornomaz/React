@@ -1,14 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\hooks-instance",
-    "\\hooks-instance\\src",
     "\\practice-with-components\\src",
     "\\practice-with-components\\src\\components",
     "\\practice-with-components\\src\\Pages",
     "\\project_1\\src",
-    "\\project_1\\src\\components"
+    "\\tasks-list\\src"
   ],
-  "SelectedNode": "\\hooks-instance\\.gitignore",
+  "SelectedNode": "\\project_1",
   "PreviewInSolutionExplorer": false
 }

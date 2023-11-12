@@ -7,7 +7,7 @@ body {
 }
 
 span {
-    color: rgb(117, 142, 158);
+    color: rgb(117, 142, 158);    
 }
 
 .to-do {
@@ -28,6 +28,6 @@ span {
     padding: 1rem;
 }
 
-.to-do i {
+.to-do b {
     z-index: 2;
 }

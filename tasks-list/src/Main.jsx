@@ -18,7 +18,7 @@ function Main() {
     function addTask(event) {
         const storedTasks = JSON.parse(localStorage.getItem("tasks"));
         if (event.key === "Enter" && event.target.value !== "") {
-            setTasks([...storedTasks, { id: uuidv4(), title: tasksTitle, status: false }]);
+            setTasks([...storedTasks, { id: uuidv4(), title: tasksTitle, status: false, time: timeOfItemAdding }]);
             setTasksTitle("");
         }
     }
@@ -32,6 +32,7 @@ function Main() {
     const month = monthNames[date.getMonth()];
     const day = date.getDate();
     const year = date.getFullYear();
+    const timeOfItemAdding = date.toLocaleTimeString();
 
     return (
         <div className="container">
