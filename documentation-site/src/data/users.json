@@ -1,0 +1,16 @@
+[
+    {   
+        "id" : "walles",
+        "name" : "John Walles",
+        "age" : 55,
+        "email" : "walles@gmail.com",
+        "img" : "https://media.oliverpeoples.com/s7/OPstories_HP_Pratti_square_D.jpg"
+    } , 
+    {
+        "id" : "beanit",
+        "name" : "Jim Beanit",
+        "age" : 23,
+        "email" : "jimmy@gmail.com",
+        "img" : "https://pyxis.nymag.com/v1/imgs/e0a/79c/5671d6e6089515f706e9b2288d41d9e824-you-people.1x.rsquare.w1400.jpg"
+    } 
+]
