@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\documentation-site",
+    "\\documentation-site\\src",
+    "\\documentation-site\\src\\Pages"
   ],
-  "SelectedNode": "\\hooks-instance",
   "PreviewInSolutionExplorer": false
 }
