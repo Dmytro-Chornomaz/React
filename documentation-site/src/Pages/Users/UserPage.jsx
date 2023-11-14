@@ -8,11 +8,11 @@ export default function UserPage() {
         <div className="Main user-page">
             <div>
                 <Link to="/users">Back</Link>
-            </div>
-            <img src={user.img} alt="avatar" />
-            <h2>User: {user.name}</h2>
-            <h3>Age: {user.age}</h3>
-            <h3>{user.email}</h3>
+            </div>            
+            <h3>User: {user.name}</h3>
+            <h4>Phone: {user.phone}</h4>
+            <h4>Email: {user.email}</h4>
+            <h4>Company: {user.company.name}</h4>
         </div>
     );
 }

@@ -11,7 +11,6 @@ import ErrorPage from './Pages/Error/Error';
 import Users from './Pages/Users/Users';
 import UserPage from './Pages/Users/UserPage';
 import './global.css';
-import usersData from './data/users.json';
 import {
     createBrowserRouter,
     createRoutesFromElements,
@@ -39,7 +38,7 @@ const router = createBrowserRouter(
             <Route path="/resources" element={<Resources />} />
             <Route path="/about" element={<About />} />
             <Route path="/users" element={<Users />} />
-            <Route path="/users/:userId" loader={loader} element={<UserPage />} errorElement={<ErrorPage />} />
+            <Route path="/users/:username" loader={loader} element={<UserPage />} errorElement={<ErrorPage />} />
             <Route path="*" element={<ErrorPage />} />
         </Route>
     )
@@ -51,7 +50,12 @@ root.render(
     <RouterProvider router={router} />
 );
 
-function loader({ params }) {
-    const user = usersData.filter(e => e.id === params.userId);
+async function loader({ params }) {
+
+    const response = await fetch("https://jsonplaceholder.typicode.com/users");
+    const users = await response.json();
+
+    const user = users.filter(e => e.username === params.username);
+
     return user[0];
 }
