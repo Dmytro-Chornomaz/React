@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.App::before {
+    content: "";
+    background: url('./images/weather_app_background.jpg') no-repeat center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.inp-field {
+    text-align: center;
+    padding: 1rem;
+}
+
+.inp-field input{
+    padding: 0.7rem 1.5rem;
+    font-size: 1.2rem;
+    border-radius: 15px;
+    border: 1px solid grey;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.container {
+    margin-top: 3vh;
+}
+
+.city h2{
+    text-align: center;
+    font-size: 3rem;
+}
+
+.temperature h3 {
+    text-align: center;
+    font-size: 7rem;
+}
+
+.description h3 {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.humidity h3 {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.wind h3 {
+    text-align: center;
+    font-size: 2rem;
+}
