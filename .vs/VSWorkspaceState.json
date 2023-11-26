@@ -1,16 +1,16 @@
 {
   "ExpandedNodes": [
     "",
+    "\\documentation-site",
     "\\documentation-site\\src",
     "\\documentation-site\\src\\Pages",
-    "\\documentation-site\\src\\Pages\\Error",
-    "\\hooks-instance\\src",
-    "\\practice-with-components\\src",
+    "\\finance_organizer",
+    "\\finance_organizer\\src",
+    "\\finance_organizer\\src\\Pages",
     "\\practice-with-redux\\src",
-    "\\project_1\\src",
-    "\\weather-app",
-    "\\weather-app\\src"
+    "\\tasks-list\\src",
+    "\\tasks-list\\src\\components"
   ],
-  "SelectedNode": "\\weather-app\\src\\App.js",
+  "SelectedNode": "\\finance_organizer\\src\\Pages\\AddTransaction",
   "PreviewInSolutionExplorer": false
 }
