@@ -36,15 +36,15 @@ const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<Root />}>
             <Route index element={<Welcome />} />
-            <Route path="/About" element={<About />} />
+            <Route path="/AddTransaction" element={<AddTransaction />} />
             <Route path="/GetLastTransaction" element={<GetLastTransaction />} />
+            <Route path="/GetExpensesForLastWeek" element={<GetExpensesForLastWeek />} />
+            <Route path="/GetExpensesForThisMonth" element={<GetExpensesForThisMonth />} />
             <Route path="/GetExpensesForThisYear" element={<GetExpensesForThisYear />} / >
-            <Route path="/GetExpensesForThisMonth" element={<GetExpensesForThisMonth />} / >
+            <Route path="/GetExpensesForSpecificMonth" element={<GetExpensesForSpecificMonth />} />
             <Route path="/GetExpensesForSpecificYear" element={<GetExpensesForSpecificYear />} / >
-            <Route path="/GetExpensesForSpecificPeriod" element={<GetExpensesForSpecificPeriod />} / >
-            <Route path="/GetExpensesForSpecificMonth" element={<GetExpensesForSpecificMonth />} / >
-            <Route path="/GetExpensesForLastWeek" element={<GetExpensesForLastWeek />} / >
-            <Route path="/AddTransaction" element={<AddTransaction />} / >
+            <Route path="/GetExpensesForSpecificPeriod" element={<GetExpensesForSpecificPeriod />} / >        
+            <Route path="/About" element={<About />} />
             <Route path="*" element={<Error />} />
         </Route>
     )

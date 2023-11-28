@@ -8,6 +8,6 @@
     display: grid;
     grid-template-areas:
         "head head head"
-        "main main sidebar"
-        "main main sidebar";
+        "sidebar main main"
+        "sidebar main main";
 }

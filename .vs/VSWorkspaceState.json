@@ -1,16 +1,14 @@
 {
   "ExpandedNodes": [
     "",
-    "\\documentation-site",
     "\\documentation-site\\src",
     "\\documentation-site\\src\\Pages",
+    "\\documentation-site\\src\\Pages\\StateHookPage",
     "\\finance_organizer",
     "\\finance_organizer\\src",
     "\\finance_organizer\\src\\Pages",
-    "\\practice-with-redux\\src",
-    "\\tasks-list\\src",
-    "\\tasks-list\\src\\components"
+    "\\finance_organizer\\src\\Pages\\GetExpensesForSpecificPeriod"
   ],
-  "SelectedNode": "\\finance_organizer\\src\\Pages\\AddTransaction",
+  "SelectedNode": "\\finance_organizer\\src\\Pages\\GetExpensesForSpecificPeriod\\GetExpensesForSpecificPeriod.js",
   "PreviewInSolutionExplorer": false
 }
