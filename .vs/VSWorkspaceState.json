@@ -1,14 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\documentation-site\\src",
-    "\\documentation-site\\src\\Pages",
-    "\\documentation-site\\src\\Pages\\StateHookPage",
     "\\finance_organizer",
     "\\finance_organizer\\src",
     "\\finance_organizer\\src\\Pages",
-    "\\finance_organizer\\src\\Pages\\GetExpensesForSpecificPeriod"
+    "\\finance_organizer\\src\\Pages\\Welcome",
+    "\\project_1",
+    "\\project_1\\src"
   ],
-  "SelectedNode": "\\finance_organizer\\src\\Pages\\GetExpensesForSpecificPeriod\\GetExpensesForSpecificPeriod.js",
   "PreviewInSolutionExplorer": false
 }
