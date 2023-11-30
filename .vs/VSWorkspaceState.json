@@ -1,14 +1,17 @@
 {
   "ExpandedNodes": [
     "",
-    "\\finance_organizer",
+    "\\documentation-site",
+    "\\documentation-site\\src",
+    "\\documentation-site\\src\\Pages",
+    "\\documentation-site\\src\\Pages\\Users",
     "\\finance_organizer\\src",
     "\\finance_organizer\\src\\Pages",
-    "\\finance_organizer\\src\\Pages\\Header",
-    "\\finance_organizer\\src\\Pages\\Welcome",
-    "\\hooks-instance\\src",
-    "\\project_1\\src"
+    "\\finance_organizer\\src\\Pages\\GetExpensesForThisYear",
+    "\\practice-with-components\\src",
+    "\\practice-with-components\\src\\Pages",
+    "\\practice-with-components\\src\\Pages\\Sidebar"
   ],
-  "SelectedNode": "\\finance_organizer\\src\\Pages\\Welcome\\Welcome.js",
+  "SelectedNode": "\\documentation-site\\src\\Pages\\Users\\UserPage.jsx",
   "PreviewInSolutionExplorer": false
 }

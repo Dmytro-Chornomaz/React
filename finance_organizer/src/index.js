@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Header from './Pages/Header/Header';
 import Sidebar from './Pages/Sidebar/Sidebar';
-import Welcome from './Pages/Welcome/Welcome';
+//import Welcome from './Pages/Welcome/Welcome';
 import About from './Pages/About/About';
 import GetLastTransaction from './Pages/GetLastTransaction/GetLastTransaction';
 import GetExpensesForThisYear from './Pages/GetExpensesForThisYear/GetExpensesForThisYear';
@@ -35,7 +35,7 @@ const Root = () => {
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<Root />}>
-            <Route index element={<Welcome />} />
+            <Route index element={<AddTransaction />} />
             <Route path="/AddTransaction" element={<AddTransaction />} />
             <Route path="/GetLastTransaction" element={<GetLastTransaction />} />
             <Route path="/GetExpensesForLastWeek" element={<GetExpensesForLastWeek />} />

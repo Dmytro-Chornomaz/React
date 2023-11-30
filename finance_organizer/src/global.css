@@ -7,7 +7,7 @@
     margin: 0 auto;
     display: grid;
     grid-template-areas:
-        "head head head"
-        "sidebar main main"
-        "sidebar main main";
+        "head head head head head"
+        "sidebar main main main main"
+        "sidebar main main main main";
 }
