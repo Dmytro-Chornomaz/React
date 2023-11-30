@@ -6,6 +6,23 @@
     border-radius: 15px;
 }
 
-.Header h1, .Header h3 {
-    color: rgb(236, 236, 236);
+    .Header h3, .Header h4, .Header p {
+        color: rgb(236, 236, 236);
+    }
+
+    .Header h3, .Header p, .Header div, .Header input, .Header h4 {
+        display: inline-block;
+    }
+
+.Login {
+    float: right;
+}
+
+.LogInText, .userInfoText {
+    margin-right: 12px;
+}
+
+.wrongInputMessage, .smthWrongMessage {
+    color: red;
+    margin-right: 12px;
 }

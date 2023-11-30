@@ -4,9 +4,11 @@
     "\\finance_organizer",
     "\\finance_organizer\\src",
     "\\finance_organizer\\src\\Pages",
+    "\\finance_organizer\\src\\Pages\\Header",
     "\\finance_organizer\\src\\Pages\\Welcome",
-    "\\project_1",
+    "\\hooks-instance\\src",
     "\\project_1\\src"
   ],
+  "SelectedNode": "\\finance_organizer\\src\\Pages\\Welcome\\Welcome.js",
   "PreviewInSolutionExplorer": false
 }
