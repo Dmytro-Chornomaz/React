@@ -1,5 +1,5 @@
 import './Header.css';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 function Header() {
 
@@ -12,6 +12,22 @@ function Header() {
 
     let wrongInputMessage = false;
     let smthWrongMessage = false;
+
+    const name = sessionStorage.getItem("userName");
+    const token = sessionStorage.getItem("accessToken");
+
+    useEffect(() => {
+        if (name && token) {
+            setVisibilityUserInfo({ display: "block" });
+            setVisibilityLoginForm({ display: "none" });
+            setUserName(name);
+        }
+        else {
+            setVisibilityUserInfo({ display: "none" });
+            setVisibilityLoginForm({ display: "block" });
+            setUserName("");
+        }
+    }, [name, token]);
 
     // To delete login mistakes messages when the input field receives focus.
     function removeRedMessages() {

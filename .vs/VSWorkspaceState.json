@@ -1,17 +1,14 @@
 {
   "ExpandedNodes": [
     "",
-    "\\documentation-site",
     "\\documentation-site\\src",
     "\\documentation-site\\src\\Pages",
     "\\documentation-site\\src\\Pages\\Users",
+    "\\finance_organizer",
     "\\finance_organizer\\src",
     "\\finance_organizer\\src\\Pages",
-    "\\finance_organizer\\src\\Pages\\GetExpensesForThisYear",
-    "\\practice-with-components\\src",
-    "\\practice-with-components\\src\\Pages",
-    "\\practice-with-components\\src\\Pages\\Sidebar"
+    "\\finance_organizer\\src\\Pages\\GetLastTransaction"
   ],
-  "SelectedNode": "\\documentation-site\\src\\Pages\\Users\\UserPage.jsx",
+  "SelectedNode": "\\finance_organizer\\src\\Pages\\GetLastTransaction\\GetLastTransaction.js",
   "PreviewInSolutionExplorer": false
 }
