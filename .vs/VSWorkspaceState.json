@@ -1,14 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\documentation-site\\src",
-    "\\documentation-site\\src\\Pages",
-    "\\documentation-site\\src\\Pages\\Users",
     "\\finance_organizer",
     "\\finance_organizer\\src",
     "\\finance_organizer\\src\\Pages",
-    "\\finance_organizer\\src\\Pages\\GetLastTransaction"
+    "\\finance_organizer\\src\\Pages\\GetExpensesForSpecificMonth"
   ],
-  "SelectedNode": "\\finance_organizer\\src\\Pages\\GetLastTransaction\\GetLastTransaction.js",
+  "SelectedNode": "\\finance_organizer\\src\\Pages\\GetExpensesForSpecificMonth\\GetExpensesForSpecificMonth.css",
   "PreviewInSolutionExplorer": false
 }

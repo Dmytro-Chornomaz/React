@@ -15,11 +15,25 @@ export default function Output(props) {
 
         if (userName && accessToken) {
 
-            if (props.url === "https://localhost:7203/api/FinanceOrganizer/GetLastTransaction") {
-                setCheckboxVisibility(false);
-            }
+            let urlWithParams = "";
 
-            let urlWithParams = props.url + `?name=${userName}&giveInPercents=${checked}`;
+            switch (props.url) {
+                case "https://localhost:7203/api/FinanceOrganizer/GetLastTransaction":
+                    setCheckboxVisibility(false);
+                    urlWithParams = props.url + `?name=${userName}&giveInPercents=${checked}`;
+                    break;
+                case "https://localhost:7203/api/FinanceOrganizer/GetExpensesForSpecificPeriod":
+                    setProblemText("");
+                    urlWithParams = props.url + `?name=${userName}&dayStart=${props.dates.beginningDay}&monthStart=${props.dates.beginningMonth}&yearStart=${props.dates.beginningYear}&dayEnd=${props.dates.endDay}&monthEnd=${props.dates.endMonth}&yearEnd=${props.dates.endYear}&giveInPercents=${checked}`;
+                    break;
+                case "https://localhost:7203/api/FinanceOrganizer/GetExpensesForSpecificMonth":
+                    setProblemText("");
+                    urlWithParams = props.url + `?name=${userName}&month=${props.dates.month}&year=${props.dates.year}&giveInPercents=${checked}`;
+                    break;
+                default:
+                    urlWithParams = props.url + `?name=${userName}&giveInPercents=${checked}`;
+                    break;
+            }
             
             const responseData = async () => {
                 const response = await fetch(urlWithParams, {
@@ -51,7 +65,7 @@ export default function Output(props) {
             setProblemText("You have to log in or create an account!");
         }
 
-    }, [props.url, checked]);
+    }, [props.url, checked, props.dates]);
 
     function checkboxHandler() {
         setChecked(!checked);

@@ -1,0 +1,8 @@
+.GetExpensesForSpecificMonth div {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.inputForm {
+    margin-right: 100px;
+}
