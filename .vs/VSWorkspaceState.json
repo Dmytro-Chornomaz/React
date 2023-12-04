@@ -4,8 +4,8 @@
     "\\finance_organizer",
     "\\finance_organizer\\src",
     "\\finance_organizer\\src\\Pages",
-    "\\finance_organizer\\src\\Pages\\GetExpensesForSpecificMonth"
+    "\\finance_organizer\\src\\Pages\\About"
   ],
-  "SelectedNode": "\\finance_organizer\\src\\Pages\\GetExpensesForSpecificMonth\\GetExpensesForSpecificMonth.css",
+  "SelectedNode": "\\finance_organizer\\src\\Pages\\About\\About.css",
   "PreviewInSolutionExplorer": false
 }

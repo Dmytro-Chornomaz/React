@@ -30,6 +30,10 @@ export default function Output(props) {
                     setProblemText("");
                     urlWithParams = props.url + `?name=${userName}&month=${props.dates.month}&year=${props.dates.year}&giveInPercents=${checked}`;
                     break;
+                case "https://localhost:7203/api/FinanceOrganizer/GetExpensesForSpecificYear":
+                    setProblemText("");
+                    urlWithParams = props.url + `?name=${userName}&year=${props.dates.specificYear}&giveInPercents=${checked}`;
+                    break;
                 default:
                     urlWithParams = props.url + `?name=${userName}&giveInPercents=${checked}`;
                     break;
@@ -54,7 +58,7 @@ export default function Output(props) {
                 }
                 else {
                     setData({});                    
-                    setProblemText("Oops! Something went wrong!");
+                    setProblemText("Oops! Something went wrong! Didn't you input the date?");
                 }
             }
 

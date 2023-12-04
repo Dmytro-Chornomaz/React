@@ -15,9 +15,6 @@ export default function GetExpensesForSpecificMonth() {
         const year = +dateArray[0];
         const month = +dateArray[1];
 
-        console.log(year);
-        console.log(month);
-
         setDates({ year, month });
     }
 
