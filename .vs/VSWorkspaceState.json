@@ -4,8 +4,8 @@
     "\\finance_organizer",
     "\\finance_organizer\\src",
     "\\finance_organizer\\src\\Pages",
-    "\\finance_organizer\\src\\Pages\\About"
+    "\\finance_organizer\\src\\Pages\\AddTransaction"
   ],
-  "SelectedNode": "\\finance_organizer\\src\\Pages\\About\\About.css",
+  "SelectedNode": "\\finance_organizer",
   "PreviewInSolutionExplorer": false
 }
