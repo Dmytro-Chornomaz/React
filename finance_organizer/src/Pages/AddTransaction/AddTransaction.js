@@ -1,5 +1,5 @@
 import './AddTransaction.css';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 export default function AddTransaction() {
 
@@ -12,24 +12,74 @@ export default function AddTransaction() {
     const summaryExpenses = useRef();
     const savings = useRef();
 
-    function addBtnHandler() {
+    const [message, setMessage] = useState("");
 
-        let inputsArray = [
-            meal,
-            communalServices,
-            medicine,
-            transport,
-            purchases,
-            leisure,
-            summaryExpenses,
-            savings
-        ];
+    // Function to add new transaction and handle the result of it.
+    async function addBtnHandler() {
 
-        let answer = inputValidator(inputsArray);
-        console.log(answer);
+        setMessage("");
 
+        const userName = sessionStorage.getItem("userName");
+        const accessToken = sessionStorage.getItem("accessToken");
+        
+        if (userName && accessToken) {
+
+            let inputsArray = [
+                meal,
+                communalServices,
+                medicine,
+                transport,
+                purchases,
+                leisure,
+                summaryExpenses,
+                savings
+            ];
+
+            let answer = inputValidator(inputsArray);
+            console.log(answer);
+
+            if (answer) {
+
+                const categoriesObj = {
+                    id: 0,
+                    personId: 0,
+                    meal: meal.current.value,
+                    communalServices: communalServices.current.value,
+                    medicine: medicine.current.value,
+                    transport: transport.current.value,
+                    purchases: purchases.current.value,
+                    leisure: leisure.current.value,
+                    summaryExpenses: summaryExpenses.current.value,
+                    savings: savings.current.value
+                }
+
+                const response = await fetch(`https://localhost:7203/api/FinanceOrganizer/AddTransaction?name=${userName}`, {
+                    method: "POST",
+                    headers: {
+                        "Accept": "*/*",
+                        "Authorization": "Bearer " + accessToken
+                    },
+                    body: JSON.stringify(categoriesObj)
+                });
+
+                if (response.ok === true) {
+                    setMessage(<p className="ok">You successfully added a new transaction!</p>);
+                }
+                else {
+                    setMessage(<p className="error">Oops! Something went wrong!</p>);
+                }
+
+            }
+            else {
+                setMessage(<p className="error">Wrong input!</p>);
+            }
+        }
+        else {
+            setMessage(<p className="error">You must log in or create account!</p>);
+        }        
     }
 
+    // Function to validate the array of input values and highlight the incorrect values.
     function inputValidator(arr) {
 
         let validationFail;        
@@ -58,6 +108,7 @@ export default function AddTransaction() {
         }
     }
 
+    // Function to validate one input value.
     function validateNumber(input) {
 
         let result;
@@ -85,12 +136,15 @@ export default function AddTransaction() {
         return result;        
     }
 
+    // Function to round the number to two decimal places.
     function roundToTwoDecimalPlaces(number) {
         return Math.round(number * 100) / 100;
     }
 
+    // Function to remove the error message and red text color of input field.
     function colorReset(e) {
         e.target.style.color = "";
+        setMessage("");
     }
 
     return (
@@ -107,6 +161,7 @@ export default function AddTransaction() {
                 <p><input type="text" onFocusCapture={colorReset} placeholder="Savings" ref={savings} /></p>
                 <p><input type="button" value="Add transaction" onClick={addBtnHandler} /></p>
             </div>
+            {message}
         </div>
     );
 }

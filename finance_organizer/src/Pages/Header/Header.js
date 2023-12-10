@@ -6,16 +6,15 @@ function Header() {
     const [visibilityUserInfo, setVisibilityUserInfo] = useState({ display: "none" }); // none
     const [visibilityLoginForm, setVisibilityLoginForm] = useState({ display: "block" }); // block
     const [userName, setUserName] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
 
     const inputName = useRef();
     const inputPassword = useRef();
 
-    let wrongInputMessage = false;
-    let smthWrongMessage = false;
-
     const name = sessionStorage.getItem("userName");
     const token = sessionStorage.getItem("accessToken");
 
+    // Function to track the credentials in the session storage.
     useEffect(() => {
         if (name && token) {
             setVisibilityUserInfo({ display: "block" });
@@ -29,10 +28,9 @@ function Header() {
         }
     }, [name, token]);
 
-    // To delete login mistakes messages when the input field receives focus.
+    // Function to delete the login mistakes messages when the input field receives focus.
     function removeRedMessages() {
-        wrongInputMessage = false;
-        smthWrongMessage = false;
+        setErrorMessage("");
     }
 
     // Log in function.
@@ -60,12 +58,12 @@ function Header() {
             setUserName(data.userName);
         }
         else if (response.status === 401) {
-            wrongInputMessage = true;
+            setErrorMessage(<p className="wrongInputMessage">Wrong name or/and password!</p>);
             inputName.current.value = "";
             inputPassword.current.value = "";
         }
         else {
-            smthWrongMessage = true;
+            setErrorMessage(<p className="smthWrongMessage">Oops! Something went wrong!</p>);
             inputName.current.value = "";
             inputPassword.current.value = "";
         }
@@ -89,8 +87,7 @@ function Header() {
                     <input type="button" value="Log out" onClick={logOutBtnHandler} />
                     <input type="button" value="Delete account" />
                 </div>
-                {wrongInputMessage && <p className="wrongInputMessage">Wrong name or/and password!</p>}
-                {smthWrongMessage && <p className="smthWrongMessage">Oops! Something went wrong!</p>}
+                {errorMessage}
                 <div className="loginForm" style={visibilityLoginForm} >
                     <h4 className="LogInText">Log in or create account</h4>
                     <p>

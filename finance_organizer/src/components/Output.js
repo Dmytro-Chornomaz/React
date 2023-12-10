@@ -8,6 +8,7 @@ export default function Output(props) {
     const [checked, setChecked] = useState(false);
     const [checkboxVisibility, setCheckboxVisibility] = useState(true);
 
+    // Function to output different types of user expenses.
     useEffect(() => {
 
         const userName = sessionStorage.getItem("userName");
@@ -38,7 +39,8 @@ export default function Output(props) {
                     urlWithParams = props.url + `?name=${userName}&giveInPercents=${checked}`;
                     break;
             }
-            
+
+            // Function to get the response and handle it.
             const responseData = async () => {
                 const response = await fetch(urlWithParams, {
                     method: "GET",
@@ -71,6 +73,7 @@ export default function Output(props) {
 
     }, [props.url, checked, props.dates]);
 
+    // Function to change checkbox state.
     function checkboxHandler() {
         setChecked(!checked);
     }
