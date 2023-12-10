@@ -3,9 +3,10 @@
     "",
     "\\finance_organizer",
     "\\finance_organizer\\src",
-    "\\finance_organizer\\src\\Pages",
-    "\\finance_organizer\\src\\Pages\\Header"
+    "\\finance_organizer\\src\\components",
+    "\\finance_organizer\\src\\components\\ModalWindow",
+    "\\finance_organizer\\src\\Pages"
   ],
-  "SelectedNode": "\\finance_organizer\\src\\Pages\\Header\\Header.js",
+  "SelectedNode": "\\finance_organizer",
   "PreviewInSolutionExplorer": false
 }

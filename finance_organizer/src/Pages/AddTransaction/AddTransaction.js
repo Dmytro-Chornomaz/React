@@ -57,7 +57,8 @@ export default function AddTransaction() {
                     method: "POST",
                     headers: {
                         "Accept": "*/*",
-                        "Authorization": "Bearer " + accessToken
+                        "Authorization": "Bearer " + accessToken,
+                        "Content-Type": "application/json"
                     },
                     body: JSON.stringify(categoriesObj)
                 });
@@ -67,6 +68,7 @@ export default function AddTransaction() {
                 }
                 else {
                     setMessage(<p className="error">Oops! Something went wrong!</p>);
+                    console.log(response);
                 }
 
             }
