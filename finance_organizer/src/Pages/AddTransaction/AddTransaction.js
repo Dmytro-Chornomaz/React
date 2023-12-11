@@ -9,7 +9,6 @@ export default function AddTransaction() {
     const transport = useRef();
     const purchases = useRef();
     const leisure = useRef();
-    const summaryExpenses = useRef();
     const savings = useRef();
 
     const [message, setMessage] = useState("");
@@ -31,12 +30,10 @@ export default function AddTransaction() {
                 transport,
                 purchases,
                 leisure,
-                summaryExpenses,
                 savings
             ];
 
             let answer = inputValidator(inputsArray);
-            console.log(answer);
 
             if (answer) {
 
@@ -49,7 +46,6 @@ export default function AddTransaction() {
                     transport: transport.current.value,
                     purchases: purchases.current.value,
                     leisure: leisure.current.value,
-                    summaryExpenses: summaryExpenses.current.value,
                     savings: savings.current.value
                 }
 
@@ -159,7 +155,6 @@ export default function AddTransaction() {
                 <p><input type="text" onFocusCapture={colorReset} placeholder="Transport" ref={transport} /></p>
                 <p><input type="text" onFocusCapture={colorReset} placeholder="Purchases" ref={purchases} /></p>
                 <p><input type="text" onFocusCapture={colorReset} placeholder="Leisure" ref={leisure} /></p>
-                <p><input type="text" onFocusCapture={colorReset} placeholder="Summary expenses" ref={summaryExpenses} /></p>
                 <p><input type="text" onFocusCapture={colorReset} placeholder="Savings" ref={savings} /></p>
                 <p><input type="button" value="Add transaction" onClick={addBtnHandler} /></p>
             </div>

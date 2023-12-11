@@ -22,7 +22,12 @@
     margin-right: 12px;
 }
 
-.wrongInputMessage, .smthWrongMessage {
+.error {
     color: red;
+    margin-right: 12px;
+}
+
+.message {
+    color: rgb(236, 236, 236);
     margin-right: 12px;
 }

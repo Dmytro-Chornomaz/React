@@ -1,6 +1,6 @@
 import './ModalWindow.css';
 
-export default function ModalWindow({ call, onDestroy, deleteConsent }) {
+export default function ModalWindow({ call, onDestroy, deleteLastTrans }) {
 
 	if (!call) {
 		return null;
@@ -18,7 +18,7 @@ export default function ModalWindow({ call, onDestroy, deleteConsent }) {
 				<b className="close" onClick={onDestroy}>X</b>
 				<h2>Delete last transaction?</h2>
 				<div className="buttons">
-					<button className="accept" onClick={deleteConsent}>Yes</button>
+					<button className="accept" onClick={deleteLastTrans}>Yes</button>
 					<button className="reject" onClick={onDestroy}>No</button>
 				</div>
 			</div>

@@ -28,44 +28,45 @@ function Header() {
         }
     }, [name, token]);
 
-    // Function to delete the login mistakes messages when the input field receives focus.
-    function removeRedMessages() {
-        setErrorMessage("");
-    }
-
-    // Log in function.
     async function logInBtnHandler() {
-        const response = await fetch("https://localhost:7203/api/Login/GenerateToken", {
-            method: "POST",
-            headers: {
-                "Accept": "text/plain",
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                login: inputName.current.value,
-                password: inputPassword.current.value
-            })
-        });
 
-        if (response.ok === true) {
-            const data = await response.json();
-            sessionStorage.setItem("userName", data.userName);
-            sessionStorage.setItem("accessToken", data.accessToken);
-            inputName.current.value = "";
-            inputPassword.current.value = "";
-            setVisibilityLoginForm({ display: "none" });
-            setVisibilityUserInfo({ display: "block" });
-            setUserName(data.userName);
-        }
-        else if (response.status === 401) {
-            setErrorMessage(<p className="wrongInputMessage">Wrong name or/and password!</p>);
-            inputName.current.value = "";
-            inputPassword.current.value = "";
+        if (validateInputs()) {
+
+            const response = await fetch("https://localhost:7203/api/Login/GenerateToken", {
+                method: "POST",
+                headers: {
+                    "Accept": "text/plain",
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    login: inputName.current.value,
+                    password: inputPassword.current.value
+                })
+            });
+
+            if (response.ok === true) {
+                const data = await response.json();
+                sessionStorage.setItem("userName", data.userName);
+                sessionStorage.setItem("accessToken", data.accessToken);
+                inputName.current.value = "";
+                inputPassword.current.value = "";
+                setVisibilityLoginForm({ display: "none" });
+                setVisibilityUserInfo({ display: "block" });
+                setUserName(data.userName);
+            }
+            else if (response.status === 401) {
+                setErrorMessage(<p className="error">Wrong name or/and password!</p>);
+                inputName.current.value = "";
+                inputPassword.current.value = "";
+            }
+            else {
+                setErrorMessage(<p className="error">Oops! Something went wrong!</p>);
+                inputName.current.value = "";
+                inputPassword.current.value = "";
+            }
         }
         else {
-            setErrorMessage(<p className="smthWrongMessage">Oops! Something went wrong!</p>);
-            inputName.current.value = "";
-            inputPassword.current.value = "";
+            setErrorMessage(<p className="error">Too short!</p>);
         }
     }
 
@@ -76,6 +77,46 @@ function Header() {
         setUserName("");
         setVisibilityUserInfo({ display: "none" });
         setVisibilityLoginForm({ display: "block" });
+    }
+
+    // Create account function.
+    async function createAccHandler() {
+        if (name && token) {
+            setErrorMessage(<p className="error">You have to log out first!</p>);
+        }
+        else if (!validateInputs()) {
+            setErrorMessage(<p className="error">Too short!</p>);
+        }
+        else {
+            setErrorMessage("");
+
+            const response = await fetch(`https://localhost:7203/api/FinanceOrganizer/CreatePerson`, {
+                method: "POST",
+                headers: {
+                    "Accept": "*/*",
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    login: inputName.current.value,
+                    password: inputPassword.current.value
+                })
+            });
+
+            if (response.ok === true) {
+                setErrorMessage(<p className="message">Success! You can log in now.</p>);
+            }
+            else {
+                setErrorMessage(<p className="error">Oops! Something went wrong!</p>);
+            }
+        }
+    }
+
+    // Function for inputs validate.
+    function validateInputs() {
+        if (inputName.current.value.length >= 2 && inputPassword.current.value.length >= 8) {
+            return true;
+        }
+        return false;
     }
 
     return (
@@ -91,13 +132,13 @@ function Header() {
                 <div className="loginForm" style={visibilityLoginForm} >
                     <h4 className="LogInText">Log in or create account</h4>
                     <p>
-                        <input type="text" placeholder="Input your name" ref={inputName} onFocus={removeRedMessages} />
+                        <input type="text" placeholder="Name (min 2 chars)" ref={inputName} onFocus={() => setErrorMessage("")} />
                     </p>
                     <p>
-                        <input type="password" placeholder="Input your password" ref={inputPassword} onFocus={removeRedMessages} />
+                        <input type="password" placeholder="Password (min 8 chars)" ref={inputPassword} onFocus={() => setErrorMessage("")} />
                     </p>
                     <input type="button" value="Log in" onClick={logInBtnHandler} />
-                    <input type="button" value="Create account" />
+                    <input type="button" value="Create account" onClick={createAccHandler} />
                 </div>
             </div>
         </div>

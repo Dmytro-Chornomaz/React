@@ -5,7 +5,7 @@ export default function About() {
         <div>
             <h1>About</h1>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi laoreet congue diam, sit amet efficitur nulla faucibus nec. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum dignissim nibh non vehicula tristique. Ut quis porttitor ante. Vivamus congue enim sed aliquet dapibus. Suspendisse vestibulum, dolor quis feugiat tempus, nibh nibh pulvinar sem, non fermentum sem est vel ante. Morbi sit amet molestie ex. Vivamus non neque ac sapien blandit mollis.
+                Financial Organizer is a service that allows you to keep convenient records of financial expenses. All expenses are divided into appropriate categories. The user can add new expenses at any time (a so-called transaction). A special convenience of the service is the ability to get your expenses for a certain time. The user can view expenses both in monetary units and as a percentage. You can delete transactions one by one, starting from the end. To use the service, you need to create an account. 
             </p>
         </div>
     );
