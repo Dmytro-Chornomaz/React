@@ -1,19 +1,25 @@
 import './Header.css';
 import { useState, useRef, useEffect } from 'react';
+import DeleteUserModalWindow from '../../components/DeleteUserModalWindow/DeleteUserModalWindow';
 
 function Header() {
+
+    const mainMessage = "Log in or create account";
+    const smthWentWrongMessage = "Oops! Something went wrong!";
+    const tooShortMessage = "Too short!";
 
     const [visibilityUserInfo, setVisibilityUserInfo] = useState({ display: "none" }); // none
     const [visibilityLoginForm, setVisibilityLoginForm] = useState({ display: "block" }); // block
     const [userName, setUserName] = useState("");
-    const [errorMessage, setErrorMessage] = useState("");
+    const [errorMessage, setErrorMessage] = useState(mainMessage);
+    const [modalState, setModalState] = useState(false);
 
     const inputName = useRef();
     const inputPassword = useRef();
 
     const name = sessionStorage.getItem("userName");
     const token = sessionStorage.getItem("accessToken");
-
+    
     // Function to track the credentials in the session storage.
     useEffect(() => {
         if (name && token) {
@@ -55,18 +61,18 @@ function Header() {
                 setUserName(data.userName);
             }
             else if (response.status === 401) {
-                setErrorMessage(<p className="error">Wrong name or/and password!</p>);
+                setErrorMessage("Wrong name or/and password!");
                 inputName.current.value = "";
                 inputPassword.current.value = "";
             }
             else {
-                setErrorMessage(<p className="error">Oops! Something went wrong!</p>);
+                setErrorMessage(smthWentWrongMessage);
                 inputName.current.value = "";
                 inputPassword.current.value = "";
             }
         }
         else {
-            setErrorMessage(<p className="error">Too short!</p>);
+            setErrorMessage(tooShortMessage);
         }
     }
 
@@ -82,13 +88,13 @@ function Header() {
     // Create account function.
     async function createAccHandler() {
         if (name && token) {
-            setErrorMessage(<p className="error">You have to log out first!</p>);
+            setErrorMessage("You have to log out first!");
         }
         else if (!validateInputs()) {
-            setErrorMessage(<p className="error">Too short!</p>);
+            setErrorMessage(tooShortMessage);
         }
         else {
-            setErrorMessage("");
+            setErrorMessage(mainMessage);
 
             const response = await fetch(`https://localhost:7203/api/FinanceOrganizer/CreatePerson`, {
                 method: "POST",
@@ -103,10 +109,10 @@ function Header() {
             });
 
             if (response.ok === true) {
-                setErrorMessage(<p className="message">Success! You can log in now.</p>);
+                setErrorMessage("Success! You can log in now.");
             }
             else {
-                setErrorMessage(<p className="error">Oops! Something went wrong!</p>);
+                setErrorMessage(smthWentWrongMessage);
             }
         }
     }
@@ -119,6 +125,10 @@ function Header() {
         return false;
     }
 
+    function deleteUserAccount() {
+
+    }
+
     return (
         <div className="Header">
             <h3 className="Name">Finance Organizer</h3>
@@ -126,21 +136,23 @@ function Header() {
                 <div className="userInfo" style={visibilityUserInfo} >
                     <p className="userInfoText">You are logged in as {userName}</p>
                     <input type="button" value="Log out" onClick={logOutBtnHandler} />
-                    <input type="button" value="Delete account" />
+                    <input type="button" value="Delete account" onClick={() => setModalState(true)} />
                 </div>
-                {errorMessage}
                 <div className="loginForm" style={visibilityLoginForm} >
-                    <h4 className="LogInText">Log in or create account</h4>
+                    <h4 className="LogInText">{errorMessage}</h4>
                     <p>
-                        <input type="text" placeholder="Name (min 2 chars)" ref={inputName} onFocus={() => setErrorMessage("")} />
+                        <input type="text" placeholder="Name (min 2 chars)" ref={inputName}
+                            onFocus={() => setErrorMessage(mainMessage)} />
                     </p>
                     <p>
-                        <input type="password" placeholder="Password (min 8 chars)" ref={inputPassword} onFocus={() => setErrorMessage("")} />
+                        <input type="password" placeholder="Password (min 8 chars)" ref={inputPassword} onFocus={() => setErrorMessage(mainMessage)} />
                     </p>
                     <input type="button" value="Log in" onClick={logInBtnHandler} />
                     <input type="button" value="Create account" onClick={createAccHandler} />
                 </div>
             </div>
+            <DeleteUserModalWindow call={modalState} onDestroy={() => setModalState(false)}
+                deleteAccount={() => deleteUserAccount()} />
         </div>
     );
 }

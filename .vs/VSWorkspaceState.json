@@ -4,10 +4,11 @@
     "\\finance_organizer",
     "\\finance_organizer\\src",
     "\\finance_organizer\\src\\components",
+    "\\finance_organizer\\src\\components\\DeleteUserModalWindow",
     "\\finance_organizer\\src\\components\\ModalWindow",
     "\\finance_organizer\\src\\Pages",
-    "\\finance_organizer\\src\\Pages\\About"
+    "\\finance_organizer\\src\\Pages\\GetLastTransaction"
   ],
-  "SelectedNode": "\\finance_organizer\\src\\Pages\\About\\About.js",
+  "SelectedNode": "\\finance_organizer\\src\\components\\ModalWindow\\ModalWindow.css",
   "PreviewInSolutionExplorer": false
 }
