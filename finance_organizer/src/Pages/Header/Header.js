@@ -13,13 +13,14 @@ function Header() {
     const [userName, setUserName] = useState("");
     const [errorMessage, setErrorMessage] = useState(mainMessage);
     const [modalState, setModalState] = useState(false);
+    const [modalMessage, setModalMessage] = useState("");
 
     const inputName = useRef();
     const inputPassword = useRef();
 
     const name = sessionStorage.getItem("userName");
     const token = sessionStorage.getItem("accessToken");
-    
+
     // Function to track the credentials in the session storage.
     useEffect(() => {
         if (name && token) {
@@ -100,7 +101,7 @@ function Header() {
                 method: "POST",
                 headers: {
                     "Accept": "*/*",
-                    "Content-Type": "application/json",
+                    "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
                     login: inputName.current.value,
@@ -125,9 +126,46 @@ function Header() {
         return false;
     }
 
-    function deleteUserAccount() {
+    async function deleteUserAccount(userPassord) {
+        console.log(userPassord);
+        
+        if (name && token) {
+            if (userPassord.length >= 8 && userPassord.length <= 20) {
 
+                const response = await fetch("https://localhost:7203/api/FinanceOrganizer/DeletePerson", {
+                    method: "DELETE",
+                    headers: {
+                        "Accept": "*/*",
+                        "Authorization": "Bearer " + token,
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        login: name,
+                        password: userPassord
+                    })
+                });
+
+                if (response.status === 204) {
+                    setModalState(false);
+                    logOutBtnHandler();
+                    setErrorMessage("User is deleted");
+                }
+                else {
+                    setModalMessage(smthWentWrongMessage);
+                }
+            }
+            else {
+                setModalMessage("Incorrect password!");
+            }
+        }
+        else {
+            setModalMessage("You have to log in first!");
+        }
     }
+
+    useEffect(() => {
+        setModalMessage("");
+    }, [modalState]);
 
     return (
         <div className="Header">
@@ -151,8 +189,9 @@ function Header() {
                     <input type="button" value="Create account" onClick={createAccHandler} />
                 </div>
             </div>
-            <DeleteUserModalWindow call={modalState} onDestroy={() => setModalState(false)}
-                deleteAccount={() => deleteUserAccount()} />
+            <DeleteUserModalWindow call={modalState} message={modalMessage} 
+                onDestroy={() => setModalState(false)}
+                deleteAccount={(userPassord) => deleteUserAccount(userPassord)} />
         </div>
     );
 }

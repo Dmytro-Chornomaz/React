@@ -26,11 +26,11 @@
     border-radius: 15px;
 }
 
-    .modal-content h2 {
+    .modal-content h2, .message {
         text-align: center;
     }
 
-.buttons button {
+.buttons button, .buttons input {
     width: 100%;
     margin: 0.3rem;
     padding: 10px;

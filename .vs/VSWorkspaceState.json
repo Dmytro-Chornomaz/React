@@ -1,14 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\finance_organizer",
-    "\\finance_organizer\\src",
-    "\\finance_organizer\\src\\components",
-    "\\finance_organizer\\src\\components\\DeleteUserModalWindow",
-    "\\finance_organizer\\src\\components\\ModalWindow",
-    "\\finance_organizer\\src\\Pages",
-    "\\finance_organizer\\src\\Pages\\GetLastTransaction"
+    "\\project_1",
+    "\\project_1\\src"
   ],
-  "SelectedNode": "\\finance_organizer\\src\\components\\ModalWindow\\ModalWindow.css",
+  "SelectedNode": "\\project_1\\src\\App.js",
   "PreviewInSolutionExplorer": false
 }
