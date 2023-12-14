@@ -8,7 +8,7 @@ export default function Output(props) {
     const [checked, setChecked] = useState(false);
     const [checkboxVisibility, setCheckboxVisibility] = useState(true);
 
-    // Function to output different types of user expenses.
+    // Hook to output different types of user expenses.
     useEffect(() => {
 
         const userName = sessionStorage.getItem("userName");
@@ -87,6 +87,7 @@ export default function Output(props) {
                 <li>Transport: {data.transport} {checked && "%"}</li>
                 <li>Purchases: {data.purchases} {checked && "%"}</li>
                 <li>Leisure: {data.leisure} {checked && "%"}</li>
+                <li>Others: {data.others} {checked && "%"}</li>
                 <li>Summary expenses: {data.summaryExpenses} {checked && "%"}</li>
                 <li>Savings: {data.savings} {checked && "%"}</li>
             </ul>

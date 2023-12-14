@@ -21,7 +21,7 @@ function Header() {
     const name = sessionStorage.getItem("userName");
     const token = sessionStorage.getItem("accessToken");
 
-    // Function to track the credentials in the session storage.
+    // Hook to track the credentials in the session storage.
     useEffect(() => {
         if (name && token) {
             setVisibilityUserInfo({ display: "block" });
@@ -35,6 +35,12 @@ function Header() {
         }
     }, [name, token]);
 
+    // Hook to track the changes in the modal window state.
+    useEffect(() => {
+        setModalMessage("");
+    }, [modalState]);
+
+    // Log in function.
     async function logInBtnHandler() {
 
         if (validateInputs()) {
@@ -126,8 +132,8 @@ function Header() {
         return false;
     }
 
-    async function deleteUserAccount(userPassord) {
-        console.log(userPassord);
+    // Function for user account deleting.
+    async function deleteUserAccount(userPassord) {        
         
         if (name && token) {
             if (userPassord.length >= 8 && userPassord.length <= 20) {
@@ -162,10 +168,6 @@ function Header() {
             setModalMessage("You have to log in first!");
         }
     }
-
-    useEffect(() => {
-        setModalMessage("");
-    }, [modalState]);
 
     return (
         <div className="Header">

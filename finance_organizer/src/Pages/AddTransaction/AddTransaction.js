@@ -9,6 +9,7 @@ export default function AddTransaction() {
     const transport = useRef();
     const purchases = useRef();
     const leisure = useRef();
+    const others = useRef();
     const savings = useRef();
 
     const [message, setMessage] = useState("");
@@ -30,6 +31,7 @@ export default function AddTransaction() {
                 transport,
                 purchases,
                 leisure,
+                others,
                 savings
             ];
 
@@ -46,6 +48,7 @@ export default function AddTransaction() {
                     transport: transport.current.value,
                     purchases: purchases.current.value,
                     leisure: leisure.current.value,
+                    others: others.current.value,
                     savings: savings.current.value
                 }
 
@@ -155,6 +158,7 @@ export default function AddTransaction() {
                 <p><input type="text" onFocusCapture={colorReset} placeholder="Transport" ref={transport} /></p>
                 <p><input type="text" onFocusCapture={colorReset} placeholder="Purchases" ref={purchases} /></p>
                 <p><input type="text" onFocusCapture={colorReset} placeholder="Leisure" ref={leisure} /></p>
+                <p><input type="text" onFocusCapture={colorReset} placeholder="Others" ref={others} /></p>
                 <p><input type="text" onFocusCapture={colorReset} placeholder="Savings" ref={savings} /></p>
                 <p><input type="button" value="Add transaction" onClick={addBtnHandler} /></p>
             </div>
