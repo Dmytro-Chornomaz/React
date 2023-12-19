@@ -7,12 +7,14 @@ export default function Output(props) {
     const [problemText, setProblemText] = useState("");
     const [checked, setChecked] = useState(false);
     const [checkboxVisibility, setCheckboxVisibility] = useState(true);
-
+    
     // Hook to output different types of user expenses.
     useEffect(() => {
 
         const userName = sessionStorage.getItem("userName");
         const accessToken = sessionStorage.getItem("accessToken");
+
+        let presenceOfDates = true;
 
         if (userName && accessToken) {
 
@@ -25,14 +27,23 @@ export default function Output(props) {
                     break;
                 case "https://localhost:7203/api/FinanceOrganizer/GetExpensesForSpecificPeriod":
                     setProblemText("");
+
+                    presenceOfDates = props.dates.beginningDay && props.dates.beginningMonth && props.dates.beginningYear && props.dates.endDay && props.dates.endMonth && props.dates.endYear;
+
                     urlWithParams = props.url + `?name=${userName}&dayStart=${props.dates.beginningDay}&monthStart=${props.dates.beginningMonth}&yearStart=${props.dates.beginningYear}&dayEnd=${props.dates.endDay}&monthEnd=${props.dates.endMonth}&yearEnd=${props.dates.endYear}&giveInPercents=${checked}`;
                     break;
                 case "https://localhost:7203/api/FinanceOrganizer/GetExpensesForSpecificMonth":
                     setProblemText("");
+
+                    presenceOfDates = props.dates.month && props.dates.year;
+
                     urlWithParams = props.url + `?name=${userName}&month=${props.dates.month}&year=${props.dates.year}&giveInPercents=${checked}`;
                     break;
                 case "https://localhost:7203/api/FinanceOrganizer/GetExpensesForSpecificYear":
                     setProblemText("");
+
+                    presenceOfDates = props.dates.specificYear != null;
+
                     urlWithParams = props.url + `?name=${userName}&year=${props.dates.specificYear}&giveInPercents=${checked}`;
                     break;
                 default:
@@ -60,11 +71,13 @@ export default function Output(props) {
                 }
                 else {
                     setData({});                    
-                    setProblemText("Oops! Something went wrong! Didn't you input the date?");
+                    setProblemText("Oops! Something went wrong!");
                 }
             }
 
-            responseData();
+            if (presenceOfDates) {
+                responseData();
+            }            
         }
         else {
             setData({});

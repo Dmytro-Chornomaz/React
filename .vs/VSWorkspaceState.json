@@ -4,9 +4,8 @@
     "\\finance_organizer",
     "\\finance_organizer\\src",
     "\\finance_organizer\\src\\Pages",
-    "\\finance_organizer\\src\\Pages\\About",
-    "\\project_1\\src"
+    "\\finance_organizer\\src\\Pages\\Header"
   ],
-  "SelectedNode": "\\finance_organizer",
+  "SelectedNode": "\\finance_organizer\\src\\Pages\\Header\\Header.js",
   "PreviewInSolutionExplorer": false
 }

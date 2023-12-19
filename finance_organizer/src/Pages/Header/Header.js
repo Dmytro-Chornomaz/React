@@ -45,6 +45,8 @@ function Header() {
 
         if (validateInputs()) {
 
+            setErrorMessage("Log in process");
+
             const response = await fetch("https://localhost:7203/api/Login/GenerateToken", {
                 method: "POST",
                 headers: {
@@ -101,7 +103,7 @@ function Header() {
             setErrorMessage(tooShortMessage);
         }
         else {
-            setErrorMessage(mainMessage);
+            setErrorMessage("Create account process");
 
             const response = await fetch(`https://localhost:7203/api/FinanceOrganizer/CreatePerson`, {
                 method: "POST",
@@ -137,6 +139,8 @@ function Header() {
         
         if (name && token) {
             if (userPassord.length >= 8 && userPassord.length <= 20) {
+
+                setErrorMessage("Delete user process");
 
                 const response = await fetch("https://localhost:7203/api/FinanceOrganizer/DeletePerson", {
                     method: "DELETE",
